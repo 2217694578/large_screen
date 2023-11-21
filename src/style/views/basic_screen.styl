@@ -1,0 +1,77 @@
+$bg-color = rgba(0,0,0,0.2)
+$other-height = 32.5%
+// 底部距离上边的距离
+$bottom-top-distance = calc(65% + 0.1rem)
+// 底部高度
+$bottom-heigt = calc(35% - 0.15rem)
+// 底部宽度
+$bottom-width = 33.2%
+
+.page
+
+  // 左侧
+  .left-top-wrapper
+    position absolute
+    width 24.5%
+    height $other-height
+    background-color $bg-color
+
+  .left-middle-wrapper
+    position absolute
+    width 24.5%
+    height $other-height
+    top calc(32.5% + 0.05rem)
+    background-color $bg-color
+
+  // 正中央
+  .middle-wrapper
+    position absolute
+    top 0
+    left 24.7%
+    height calc(65% + 0.05rem)
+    width 50.6%
+    background-color $bg-color
+
+  // 右侧
+  .right-top-wrapper
+    position absolute
+    width 24.5%
+    height $other-height
+    top 0
+    right 0
+    background-color $bg-color
+
+  .right-middle-wrapper
+    position absolute
+    width 24.5%
+    height $other-height
+    top calc(32.5% + 0.05rem)
+    right 0
+    background-color $bg-color
+
+  .bottom-left-wrapper
+    position absolute
+    top $bottom-top-distance
+    left 0
+    height $bottom-heigt
+    width $bottom-width
+    background-color $bg-color
+
+  .bottom-middle-wrapper
+    position absolute
+    top $bottom-top-distance
+    left 33.4%
+    height $bottom-heigt
+    width $bottom-width
+    background-color $bg-color
+
+  .bottom-right-wrapper
+    position absolute
+    top $bottom-top-distance
+    right 0
+    height $bottom-heigt
+    width $bottom-width
+    background-color $bg-color
+
+
+
