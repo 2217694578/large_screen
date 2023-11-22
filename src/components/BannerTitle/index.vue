@@ -11,14 +11,6 @@ export default {
       type:String,
       required:true
     }
-  },
-  data(){
-    return {
-
-    }
-  },
-  methods:{
-
   }
 }
 </script>

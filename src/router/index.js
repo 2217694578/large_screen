@@ -79,7 +79,7 @@ const router = new VueRouter({
 router.beforeEach((to,from,next) => {
   NProgress.start(); // 进度条开始
   if(to.meta.isAuth){
-
+    next()
   }else{
     next()
   }

@@ -14,14 +14,12 @@ $bottom-width = 33.2%
     position absolute
     width 24.5%
     height $other-height
-    background-color $bg-color
 
   .left-middle-wrapper
     position absolute
     width 24.5%
     height $other-height
     top calc(32.5% + 0.05rem)
-    background-color $bg-color
 
   // 正中央
   .middle-wrapper
@@ -39,7 +37,6 @@ $bottom-width = 33.2%
     height $other-height
     top 0
     right 0
-    background-color $bg-color
 
   .right-middle-wrapper
     position absolute
@@ -47,7 +44,6 @@ $bottom-width = 33.2%
     height $other-height
     top calc(32.5% + 0.05rem)
     right 0
-    background-color $bg-color
 
   .bottom-left-wrapper
     position absolute
@@ -55,7 +51,6 @@ $bottom-width = 33.2%
     left 0
     height $bottom-heigt
     width $bottom-width
-    background-color $bg-color
 
   .bottom-middle-wrapper
     position absolute
@@ -63,7 +58,6 @@ $bottom-width = 33.2%
     left 33.4%
     height $bottom-heigt
     width $bottom-width
-    background-color $bg-color
 
   .bottom-right-wrapper
     position absolute
@@ -71,7 +65,22 @@ $bottom-width = 33.2%
     right 0
     height $bottom-heigt
     width $bottom-width
-    background-color $bg-color
 
+    .include-title-table-area-content
+      padding .04rem .02rem
+      height calc(100% - 0.36rem)
+      width 100%
+      overflow hidden
+
+// 含标题的内容区
+.include-title-area-content
+  height calc(100% - 0.36rem)
+  width 100%
+  overflow hidden
+
+// echarts图表
+.echarts
+  height 100%
+  width 100%
 
 
