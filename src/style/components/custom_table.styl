@@ -6,7 +6,7 @@
     display flex
     align-items center
     justify-content space-evenly
-    height 0.28rem
+    height 0.30rem
     width 100%
     margin-bottom 0.02rem
     background radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)
@@ -14,11 +14,35 @@
     border-radius 0.05rem
 
     .header-title-item
-      font-size .14rem
+      font-size .16rem
       font-weight bold
       text-align center
 
   .table-body
-    height calc(100% - 0.3rem)
+    height calc(100% - 0.32rem)
     width 100%
-    background-color: #eee
+    overflow hidden
+
+    .table-body-content
+
+      li:nth-child(2n - 1)
+        background-color #FFFFFF
+
+      li:nth-child(2n)
+        background-color #dbdbdb
+
+      .table-data-item
+        display flex
+        justify-content space-evenly
+        align-items center
+        height 0.28rem
+
+        .field-item
+          text-align center
+          font-size .14rem
+
+      .table-data-last-item
+        height 0.28rem
+        width 100%
+        text-align center
+        color #ee3f4d

@@ -13,7 +13,8 @@
 
   //- 中央容器
   .middle-wrapper
-
+    .map-content
+      #map
 
   //- 右侧容器
   .right-top-wrapper
@@ -26,7 +27,6 @@
     .include-title-area-content
       .echarts#basicBar
 
-
   //- 底部容器
   .bottom-left-wrapper
     banner-title(title="横向排行条形图")
@@ -35,11 +35,18 @@
 
   .bottom-middle-wrapper
     banner-title(title="数据展示5")
+    .include-title-area-content
+      el-image(:src='require("../../assets/image/bottom-middle.png")' fit="contain" style="height:100%;width:100%;")
 
   .bottom-right-wrapper
     banner-title(title="表格展示数据")
     .include-title-table-area-content
-      custom-table(:header-title="tableHeader")
+      card-background
+        template(#content)
+          custom-table(
+            :header-title="tableHeader"
+            :table-data="tableData"
+          )
 
 
 </template>
@@ -48,6 +55,10 @@
 // components
 import BannerTitle from '@/components/BannerTitle';
 import CustomTable from '@/components/CustomTable'
+import CardBackground from '@/components/CardBackground'
+
+// image
+import MapImage from '@/assets/image/1.jpg'
 
 // echarts
 import { basicPie, basicRadar, basicLine, rowRankBar, basicBar } from '@/utils';
@@ -56,17 +67,93 @@ export default {
   name:"BasicScreenPage",
   components:{
     BannerTitle,
-    CustomTable
+    CustomTable,
+    CardBackground
   },
   data(){
     return {
-      tableHeader:["名称","地点","时间"]
+      map:null,
+      tableHeader:[
+        {
+          field:'name',
+          label:'名称'
+        },
+        {
+          field:'address',
+          label:"地点"
+        },
+        {
+          field:"time",
+          label:"时间"
+        }
+      ],
+      tableData:[
+        {
+          id:"1",
+          name:'测试',
+          address:"地球",
+          time:"2023/11/23 9:56"
+        },
+        {
+          id:"2",
+          name:'测试',
+          address:"中国",
+          time:"2023/11/23 9:56"
+        },
+        {
+          id:"3",
+          name:'测试',
+          address:"上海",
+          time:"2023/11/23 9:56"
+        },
+        {
+          id:"4",
+          name:'测试',
+          address:"宝山",
+          time:"2023/11/23 9:56"
+        },
+        {
+          id:"5",
+          name:'测试',
+          address:"友谊路",
+          time:"2023/11/23 9:56"
+        },
+        {
+          id:"6",
+          name:'测试',
+          address:"三号楼",
+          time:"2023/11/23 9:56"
+        }
+      ]
     }
   },
   mounted(){
+    this.$nextTick(() => {
+      this.initMap()
+    })
     this.drawAllEcharts()
   },
   methods:{
+    initMap(){
+      this.map = new window.BSMap("#map",{
+        tooltip:{
+          show:true,
+          type:'normal'
+        }
+      })
+
+      const mapConfig = {
+        src:MapImage,
+        size:[5000,5000],
+        center:[-1,-1],
+        zoom:2
+      }
+
+      this.map.load(mapConfig,() => {
+
+      })
+    },
+
     drawAllEcharts(){
       this.getBasicPieData() // 饼图
       this.getBasicRadar() //雷达

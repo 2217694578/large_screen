@@ -3,15 +3,30 @@
   .table-header
     .header-title-item(
       v-for="item in headerTitle"
-      :key="item"
+      :key="item.field"
       :style="{width:headerWidth}"
-    ) {{ item }}
-  .table-body
-
-
+    ) {{ item.label }}
+  vue-seamless-scroll(
+    :data="tableData"
+    class="table-body"
+    :class-option="defaultOption"
+  )
+    ul(class="table-body-content")
+      li(
+        v-for="item in tableData"
+        :key="item.id"
+        class="table-data-item"
+      )
+        .field-item(
+          v-for="k in headerTitle"
+          :key="k.field"
+          :style="{width:headerWidth}"
+        ) {{ item[k.field] }}
+      li(class="table-data-last-item") 到底了~
 </template>
 
 <script>
+import { fontSizeRem } from '@/utils'
 export default {
   name:"CustomTable",
   props:{
@@ -26,14 +41,20 @@ export default {
   },
   data(){
     return {
-      headerWidth:""
+      headerWidth:"",
+      defaultOption:{
+        // singleHeight:fontSizeRem(28),
+        // waitTime:1500,
+        step:0.5,
+        openWatch:true
+      }
     }
   },
   mounted(){
-    this.getHeaderWidth()
+    this.processPropsData()
   },
   methods:{
-    getHeaderWidth(){
+    processPropsData(){
       this.headerWidth = parseInt(100 / this.headerTitle.length) + "%"
     }
   }

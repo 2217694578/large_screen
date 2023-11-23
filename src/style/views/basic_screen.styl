@@ -7,6 +7,28 @@ $bottom-heigt = calc(35% - 0.15rem)
 // 底部宽度
 $bottom-width = 33.2%
 
+@keyframes blob-bounce {
+  0% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+  }
+
+  50% {
+    transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+  }
+
+  75% {
+    transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+  }
+
+  100% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
+}
+
 .page
 
   // 左侧
@@ -28,7 +50,19 @@ $bottom-width = 33.2%
     left 24.7%
     height calc(65% + 0.05rem)
     width 50.6%
-    background-color $bg-color
+    z-index 1
+
+    .map-content
+      position absolute
+      top 0.05rem
+      left 0.05rem
+      bottom 0.05rem
+      right 0.05rem
+      z-index 2
+
+      #map
+        height 100%
+        width 100%
 
   // 右侧
   .right-top-wrapper
@@ -59,6 +93,10 @@ $bottom-width = 33.2%
     height $bottom-heigt
     width $bottom-width
 
+    img
+      // width 100%
+      height 100%
+
   .bottom-right-wrapper
     position absolute
     top $bottom-top-distance
@@ -77,6 +115,7 @@ $bottom-width = 33.2%
   height calc(100% - 0.36rem)
   width 100%
   overflow hidden
+  // background radial-gradient(circle, rgba(115,132,191,0.5242471988795518) 0%, rgba(204,220,231,0.7875525210084033) 50%, rgba(142,195,205,0.4990371148459384) 100%)
 
 // echarts图表
 .echarts
