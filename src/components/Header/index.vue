@@ -12,7 +12,7 @@
 
   //- 中间标题容器
   .header-title-wrapper
-    .title {{$route.path === '/basic_screen' ? "基础数据可视化大屏" : "三维数据可视化大屏"}}
+    .title {{$route.path === '/basic' ? "基础数据可视化大屏" : "三维数据可视化大屏"}}
 
   //- 右侧容器
   .header-right-wrapper

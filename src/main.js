@@ -9,13 +9,16 @@ import router from './router'
 import scroll from 'vue-seamless-scroll'
 // elementui
 import {
-  Image
+  Image,
+  Message
 } from 'element-ui'
 
 Vue.config.productionTip = false
 
 Vue.use(scroll)
    .use(Image)
+
+Vue.prototype.$message = Message;
 
 new Vue({
   store,

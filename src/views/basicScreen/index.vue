@@ -34,18 +34,7 @@
       .echarts#rowRankBar
 
   .bottom-middle1-wrapper
-    banner-title(title="数据展示5")
-    .include-title-area-content
-      el-image(:src='require("../../assets/image/bottom-middle.png")' fit="contain" style="height:100%;width:100%;")
-
-  .bottom-middle2-wrapper
-    banner-title(title="视频展示(MP4)")
-    .include-title-area-content
-      video-player(id="my-mp4" :src="videoUrl")
-
-
-  .bottom-right-wrapper
-    banner-title(title="表格展示数据")
+    banner-title(title="表格数据展示5")
     .include-title-table-area-content
       card-background
         template(#content)
@@ -53,6 +42,21 @@
             :header-title="tableHeader"
             :table-data="tableData"
           )
+
+  .bottom-middle2-wrapper
+    banner-title(title="表格数据展示6")
+    .include-title-table-area-content
+      card-background
+        template(#content)
+          custom-table(
+            :header-title="tableHeader"
+            :table-data="tableData"
+          )
+
+  .bottom-right-wrapper
+    banner-title(title="视频展示(MP4)")
+    .include-title-area-content
+      video-player(id="my-mp4" :src="videoUrl")
 
 
 </template>
@@ -63,12 +67,13 @@ import BannerTitle from '@/components/BannerTitle';
 import CustomTable from '@/components/CustomTable'
 import VideoPlayer from '@/components/VideoPlayer'
 import CardBackground from '@/components/CardBackground'
-
-// image
+// assets 静态资源
 import MapImage from '@/assets/image/1.jpg'
-
 // echarts
 import { basicPie, basicRadar, basicLine, rowRankBar, basicBar } from '@/utils';
+// api
+import { getScreenInfo } from '@/api';
+
 
 export default {
   name:"BasicScreenPage",
@@ -82,67 +87,30 @@ export default {
     return {
       map:null,
       videoUrl:"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
-      tableHeader:[
-        {
-          field:'name',
-          label:'名称'
-        },
-        {
-          field:'address',
-          label:"地点"
-        },
-        {
-          field:"time",
-          label:"时间"
-        }
-      ],
-      tableData:[
-        {
-          id:"1",
-          name:'测试',
-          address:"地球",
-          time:"2023/11/23 9:56"
-        },
-        {
-          id:"2",
-          name:'测试',
-          address:"中国",
-          time:"2023/11/23 9:56"
-        },
-        {
-          id:"3",
-          name:'测试',
-          address:"上海",
-          time:"2023/11/23 9:56"
-        },
-        {
-          id:"4",
-          name:'测试',
-          address:"宝山",
-          time:"2023/11/23 9:56"
-        },
-        {
-          id:"5",
-          name:'测试',
-          address:"友谊路",
-          time:"2023/11/23 9:56"
-        },
-        {
-          id:"6",
-          name:'测试',
-          address:"三号楼",
-          time:"2023/11/23 9:56"
-        }
-      ]
+      tableHeader:[],
+      tableData:[]
     }
   },
   mounted(){
     this.$nextTick(() => {
       this.initMap()
     })
-    this.drawAllEcharts()
+    this.fetchScreenInfo()
   },
   methods:{
+    async fetchScreenInfo(){
+      let res = await getScreenInfo({web_name:"basic"})
+      console.log(res)
+      if(res.status === 200){
+        const data = res.data
+        this.drawAllEcharts(data)
+        this.videoUrl = data.date8
+        this.tableHeader = data.date7.tableHeader
+        this.tableData = data.date7.tableData
+      }else{
+        this.$message.warning("Fetching screen info failed")
+      }
+    },
     // 初始化地图
     initMap(){
       this.map = new window.BSMap("#map",{
@@ -164,33 +132,34 @@ export default {
       })
     },
 
-    drawAllEcharts(){
-      this.getBasicPieData() // 饼图
+    drawAllEcharts(data){
+      this.getBasicPieData(data.date1) // 饼图
       this.getBasicRadar() //雷达
-      this.getBasicLineData() //折线
-      this.getBasicBarData() //柱状
-      this.getRowRankBarData() // 横向排行图
+      this.getBasicLineData(data.date2) //折线
+      this.getBasicBarData(data.date4) //柱状
+      this.getRowRankBarData(data.date6) // 横向排行图
     },
     // 左一
-    getBasicPieData(){
+    getBasicPieData(date1){
       const data = {
         seriesData:[
-          {
-            name:"数据一",
-            value:50
-          },
-          {
-            name:"数据二",
-            value:30
-          },
-          {
-            name:"数据三",
-            value:10
-          },
-          {
-            name:"数据四",
-            value:10
-          }
+          ...date1
+          // {
+          //   name:"数据一",
+          //   value:50
+          // },
+          // {
+          //   name:"数据二",
+          //   value:30
+          // },
+          // {
+          //   name:"数据三",
+          //   value:10
+          // },
+          // {
+          //   name:"数据四",
+          //   value:10
+          // }
         ]
       }
 
@@ -208,30 +177,32 @@ export default {
     },
 
     // 左二
-    getBasicLineData(){
+    getBasicLineData(date2){
       const data = {
         xAxisData:[
-          "2023/11/18",
-          "2023/11/19",
-          "2023/11/20",
-          "2023/11/21",
-          "2023/11/22",
-          "2023/11/23",
-          "2023/11/24"
+          ...date2.xAxisData
+          // "2023/11/18",
+          // "2023/11/19",
+          // "2023/11/20",
+          // "2023/11/21",
+          // "2023/11/22",
+          // "2023/11/23",
+          // "2023/11/24"
         ],
         seriesData: [
-          {
-            name:"火焰报警",
-            value:[0,0,5,9,1,6,3]
-          },
-          {
-            name:"未戴安全帽",
-            value:[0,0,11,21,15,14,9]
-          },
-          {
-            name:"超速",
-            value:[5,3,0,1,2,4,3]
-          }
+          ...date2.seriesData
+          // {
+          //   name:"火焰报警",
+          //   value:[0,0,5,9,1,6,3]
+          // },
+          // {
+          //   name:"未戴安全帽",
+          //   value:[0,0,11,21,15,14,9]
+          // },
+          // {
+          //   name:"超速",
+          //   value:[5,3,0,1,2,4,3]
+          // }
         ]
       }
 
@@ -298,10 +269,12 @@ export default {
     },
 
     // 右二
-    getBasicBarData(){
+    getBasicBarData(date4){
       const data = {
-        xAxisData: ["安全帽案例","玩手机案例","火焰案例"],
-        seriesData: [100,200,300]
+        // xAxisData: ["安全帽案例","玩手机案例","火焰案例"],
+        // seriesData: [100,200,300]
+        xAxisData:date4.xAxisData,
+        seriesData:date4.seriesData
       }
 
       const config = {
@@ -322,14 +295,16 @@ export default {
     },
 
     // 底左
-    getRowRankBarData(){
+    getRowRankBarData(date5){
       const data = {
-        dimensions:['id','name','alarmNumber'],
+        // dimensions:['id','name','alarmNumber'],
+        dimensions:date5.dimensions,
         source:[
-          {id:"1",name:"未戴安全帽",alarmNumber:119},
-          {id:"2",name:"火焰报警",alarmNumber:81},
-          {id:"3",name:"气体报警",alarmNumber:51},
-          {id:"4",name:"超速报警",alarmNumber:16},
+          ...date5.source
+          // {id:"1",name:"未戴安全帽",alarmNumber:119},
+          // {id:"2",name:"火焰报警",alarmNumber:81},
+          // {id:"3",name:"气体报警",alarmNumber:51},
+          // {id:"4",name:"超速报警",alarmNumber:16},
         ]
       }
       const config = {

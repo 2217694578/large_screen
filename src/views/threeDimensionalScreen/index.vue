@@ -14,7 +14,11 @@
 </template>
 
 <script>
+// components
 import BannerTitle from '@/components/BannerTitle'
+// api
+import { getScreenInfo } from '@/api';
+
 export default {
   name:"ThreeDimensionalScreenPage",
   components:{
@@ -26,10 +30,13 @@ export default {
     }
   },
   mounted(){
-
+    this.fetchScreenInfo()
   },
   methods:{
-
+    async fetchScreenInfo(){
+      let res = await getScreenInfo({web_name:"three"})
+      console.log(res)
+    }
   }
 }
 </script>

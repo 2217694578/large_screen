@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { fontSizeRem } from '@/utils'
+// import { fontSizeRem } from '@/utils'
 export default {
   name:"CustomTable",
   props:{
