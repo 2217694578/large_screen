@@ -25,7 +25,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path:'/',
-    redirect:'/basic_screen'
+    redirect:'/basic'
   },
   {
     path:"/login",
@@ -37,7 +37,7 @@ const routes = [
     }
   },
   {
-    path:'/basic_screen',
+    path:'/basic',
     name:"BasicScreenPage",
     component:BasicScreen,
     meta:{
@@ -46,7 +46,7 @@ const routes = [
     }
   },
   {
-    path:'/three_dimensional_screen',
+    path:'/three',
     name:"ThreeDimensionalScreenPage",
     component:() => import('@/views/threeDimensionalScreen'),
     meta:{

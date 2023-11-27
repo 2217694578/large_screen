@@ -13,6 +13,8 @@ require('echarts/lib/chart/radar'); // 雷达图
 
 export const drawEcharts = (option , id) => {
   let dom = document.getElementById(id)
+  if(dom === null) return
+
   let echart = echarts.init(dom)
   option && echart.setOption(option)
 

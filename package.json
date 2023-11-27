@@ -13,6 +13,7 @@
     "echarts": "^5.4.3",
     "element-ui": "^2.15.14",
     "nprogress": "^0.2.0",
+    "video.js": "^8.6.1",
     "vue": "^2.6.11",
     "vue-router": "^3.6.5",
     "vue-seamless-scroll": "^1.1.23",

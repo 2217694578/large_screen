@@ -33,10 +33,16 @@
     .include-title-area-content
       .echarts#rowRankBar
 
-  .bottom-middle-wrapper
+  .bottom-middle1-wrapper
     banner-title(title="数据展示5")
     .include-title-area-content
       el-image(:src='require("../../assets/image/bottom-middle.png")' fit="contain" style="height:100%;width:100%;")
+
+  .bottom-middle2-wrapper
+    banner-title(title="视频展示(MP4)")
+    .include-title-area-content
+      video-player(id="my-mp4" :src="videoUrl")
+
 
   .bottom-right-wrapper
     banner-title(title="表格展示数据")
@@ -55,6 +61,7 @@
 // components
 import BannerTitle from '@/components/BannerTitle';
 import CustomTable from '@/components/CustomTable'
+import VideoPlayer from '@/components/VideoPlayer'
 import CardBackground from '@/components/CardBackground'
 
 // image
@@ -68,11 +75,13 @@ export default {
   components:{
     BannerTitle,
     CustomTable,
+    VideoPlayer,
     CardBackground
   },
   data(){
     return {
       map:null,
+      videoUrl:"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
       tableHeader:[
         {
           field:'name',
@@ -134,6 +143,7 @@ export default {
     this.drawAllEcharts()
   },
   methods:{
+    // 初始化地图
     initMap(){
       this.map = new window.BSMap("#map",{
         tooltip:{
