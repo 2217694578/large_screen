@@ -17,5 +17,5 @@ npm run dev
 ```
 
 #### 示例
+![1701140652095](https://github.com/2217694578/large_screen/assets/74054299/e909e394-6aa5-45e8-8e4b-69868fd5ffd0)
 
-![1701138719354](D:\微信\WeChat Files\wxid_24qo7jtuw5db22\FileStorage\Temp\1701138719354.png)
