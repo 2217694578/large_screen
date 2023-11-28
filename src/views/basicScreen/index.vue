@@ -86,7 +86,7 @@ export default {
   data(){
     return {
       map:null,
-      videoUrl:"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
+      videoUrl:"",
       tableHeader:[],
       tableData:[]
     }

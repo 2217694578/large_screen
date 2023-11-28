@@ -1,0 +1,196 @@
+{
+  "status": 200,
+  "data": {
+    "date1": [
+      {
+        "name": "数据一",
+        "value": 50
+      },
+      {
+        "name": "数据二",
+        "value": 30
+      },
+      {
+        "name": "数据三",
+        "value": 10
+      },
+      {
+        "name": "数据四",
+        "value": 10
+      }
+    ],
+    "date2": {
+      "xAxisData": [
+        "2023/11/18",
+        "2023/11/19",
+        "2023/11/20",
+        "2023/11/21",
+        "2023/11/22",
+        "2023/11/23",
+        "2023/11/24"
+      ],
+      "seriesData": [
+        {
+          "name": "火焰报警",
+          "value": [
+            0,
+            0,
+            5,
+            9,
+            1,
+            6,
+            3
+          ]
+        },
+        {
+          "name": "未戴安全帽",
+          "value": [
+            0,
+            0,
+            11,
+            21,
+            15,
+            14,
+            9
+          ]
+        },
+        {
+          "name": "超速",
+          "value": [
+            5,
+            3,
+            0,
+            1,
+            2,
+            4,
+            3
+          ]
+        }
+      ]
+    },
+    "date3": {
+      "orient": "vertical",
+      "legendleft": "right",
+      "center": [
+        "50%",
+        "55%"
+      ],
+      "radius": "75%",
+      "indicator": [
+        {
+          "name": "CPU"
+        },
+        {
+          "name": "GPU"
+        },
+        {
+          "name": "温度"
+        },
+        {
+          "name": "内存"
+        },
+        {
+          "name": "速度"
+        }
+      ]
+    },
+    "date4": {
+      "xAxisData": [
+        "安全帽案例",
+        "玩手机案例",
+        "火焰案例"
+      ],
+      "seriesData": [
+        100,
+        200,
+        300
+      ]
+    },
+    "date5": "../../assets/image/bottom-middle.png",
+    "date6": {
+      "dimensions": [
+        "id",
+        "name",
+        "alarmNumber"
+      ],
+      "source": [
+        {
+          "id": "1",
+          "name": "未戴安全帽",
+          "alarmNumber": 119
+        },
+        {
+          "id": "2",
+          "name": "火焰报警",
+          "alarmNumber": 81
+        },
+        {
+          "id": "3",
+          "name": "气体报警",
+          "alarmNumber": 51
+        },
+        {
+          "id": "4",
+          "name": "超速报警",
+          "alarmNumber": 16
+        }
+      ]
+    },
+    "date7": {
+      "map": "null",
+      "tableHeader": [
+        {
+          "field": "name",
+          "label": "名称"
+        },
+        {
+          "field": "address",
+          "label": "地点"
+        },
+        {
+          "field": "time",
+          "label": "时间"
+        }
+      ],
+      "tableData": [
+        {
+          "id": "1",
+          "name": "测试",
+          "address": "地球",
+          "time": "2023/11/23 9:56"
+        },
+        {
+          "id": "2",
+          "name": "测试",
+          "address": "中国",
+          "time": "2023/11/23 9:56"
+        },
+        {
+          "id": "3",
+          "name": "测试",
+          "address": "上海",
+          "time": "2023/11/23 9:56"
+        },
+        {
+          "id": "4",
+          "name": "测试",
+          "address": "宝山",
+          "time": "2023/11/23 9:56"
+        },
+        {
+          "id": "5",
+          "name": "测试",
+          "address": "友谊路",
+          "time": "2023/11/23 9:56"
+        },
+        {
+          "id": "6",
+          "name": "测试",
+          "address": "三号楼",
+          "time": "2023/11/23 9:56"
+        }
+      ]
+    },
+    "date8": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+  }
+}
