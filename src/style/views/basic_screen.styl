@@ -6,6 +6,8 @@ $bottom-top-distance = calc(65% + 0.1rem)
 $bottom-heigt = calc(35% - 0.15rem)
 // 底部宽度
 $bottom-width = calc((100% - 0.15rem) / 4)
+//
+$background-image = url('../../assets/image/content-bg.png')
 
 @keyframes blob-bounce {
   0% {
@@ -36,12 +38,18 @@ $bottom-width = calc((100% - 0.15rem) / 4)
     position absolute
     width 24.5%
     height $other-height
+    background $background-image
+    background-size 100% 100%
+    background-repeat no-repeat
 
   .left-middle-wrapper
     position absolute
     width 24.5%
     height $other-height
     top calc(32.5% + 0.05rem)
+    background $background-image
+    background-size 100% 100%
+    background-repeat no-repeat
 
   // 正中央
   .middle-wrapper
